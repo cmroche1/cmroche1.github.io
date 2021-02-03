@@ -1,0 +1,12 @@
+---
+title: "About Me"
+author: "Chris Roche"
+date: "2/3/2021"
+output: html_document
+---
+
+# Chris Roche
+## Location: Dallas, Texas
+## Interests: Baseball, Reading, Space
+## Undergrad: University of North Texas, B.S. Computer Science
+## Graduate: Current SMU Student, M.S. Data Science

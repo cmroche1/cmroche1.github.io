@@ -1,0 +1,10 @@
+name: "my-website"
+navbar:
+  title: "Chris Roche GitHub"
+  left: 
+    - text: "Home"
+      href: index.html
+    - text: "About Me"
+      href: AboutMe.html
+    - text: "CaseStudy1"
+      href: Projects/CaseStudy1_Group3.html
