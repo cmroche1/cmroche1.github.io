@@ -1,0 +1,255 @@
+---
+title: "Case Study 01"
+author: "Chris Roche"
+date: "02/03/2021"
+output: html_document
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo = FALSE}
+
+suppressMessages(library(shiny))
+suppressMessages(library(tidyverse))
+suppressMessages(library(ggthemes))
+suppressMessages(library(Rmisc))
+suppressMessages(library(ggpubr))
+suppressMessages(library(stringr))
+suppressMessages(library(usmap))
+```
+
+```{r echo = FALSE}
+ui <- fluidPage(
+  
+  # App title ----
+  titlePanel("Beers of the United States"),
+  
+  #######
+  # Sidebar layout with input and output definitions ----
+  sidebarLayout(
+    
+    #######
+    # Sidebar panel for inputs ----
+    sidebarPanel(
+      
+      # File upload
+      fileInput("file", "Choose Beer File", accept = ".csv"),
+      fileInput("file2", "Choose Brewery File", accept = ".csv"),
+
+      # ABV or IBU
+      radioButtons("variable", label = h3("Data to Use"),
+          choices = list("IBU" = 1, "ABV" = 2), selected = 1),
+
+      # Hist v Box
+      radioButtons("distType", label = h3("Plot type"),
+          choices = list("Histogram" = 1, "Boxplot" = 2), selected = 1),
+      
+      # Number of bins
+      sliderInput(inputId = "bins",
+          label = "Number of Histogram bins:",
+          min = 1,
+          max = 50,
+          value = 30),
+      
+      # Render Regression Line
+      checkboxInput("regression", "Render Regression Line", TRUE),
+      #radioButtons("regression", label = h3("Render regression line"),
+      #    choices = list("Yes" = 1, "No" = 2), selected = 1),
+      
+    ),# end sidebarPanel
+    
+    #######
+    # Main panel for displaying outputs
+    mainPanel(
+      
+      tabsetPanel(type = "tabs",
+                  tabPanel("Distribution", plotOutput("histPlot")),
+                  tabPanel("Scatterplot", plotOutput("scatPlot")),
+                  tabPanel("States Map", plotOutput("statePlot")),
+                  tabPanel("State Filter")
+                 )
+
+      
+    ) ) ) # end main, sidebarLayout, fluid page
+
+# Define server logic required to draw a histogram ----
+server <- function(input, output) {
+  
+    #######
+    # Render the histogram plot
+    output$histPlot <- renderPlot({
+  
+       ##########
+       ## Get the file
+       inFile <- input$file
+
+       if (is.null(inFile))
+         return(NULL)
+
+       beerDataOrig <- read.csv(inFile$datapath, header=TRUE)
+
+       #clean the data here
+       beerData = beerDataOrig %>% filter(!is.na(Name) & !is.na(Beer_ID) &
+                        !is.na(ABV) & !is.na(IBU) & !is.na(Brewery_id))
+
+       
+      if(input$distType == 2) ## Boxplot
+      {
+
+        if(input$variable == 1) ## IBU
+        {
+           x    <- beerData$IBU
+           boxplot(x, col = "#75AADB", border = "black",
+              xlab = "International Bitterness Units",
+              ylab = "Bitterness",
+              main = "Histogram of IBU")
+        }
+
+        if(input$variable == 2) ## ABV
+        {
+           x    <- beerData$ABV
+           boxplot(x, col = "#75AADB", border = "black",
+              xlab = "Alcohol by Volume",
+              ylab = "ABV (%)",
+              main = "Histogram of ABV")
+        }
+        
+      }
+      else
+      {
+       
+      ##########
+      ## Put an if/else for the two types here
+      ## don't forget to update the histogram labels
+      if(input$variable == 1) ## IBU
+      {
+         # update this to data and variable from above:
+         x    <- beerData$IBU
+      
+         # use the number of bins from the user here
+         bins <- seq(min(x), max(x), length.out = input$bins + 1)
+      
+         #output the histogram
+         hist(x, breaks = bins, col = "#75AADB", border = "black",
+           xlab = "International Bitterness Units",
+           main = "Histogram of IBU")
+      }
+      
+      if(input$variable == 2) ## ABV
+      {
+         # update this to data and variable from above:
+         x    <- beerData$ABV
+      
+         # use the number of bins from the user here
+         bins <- seq(min(x), max(x), length.out = input$bins + 1)
+      
+         #output the histogram
+         hist(x, breaks = bins, col = "#75AADB", border = "black",
+           xlab = "Alcohol by Volume",
+           main = "Histogram of ABV")
+      } # end ibu vs abv if/else
+      } # end dist plot type if/else
+    
+    })
+
+    
+    #######
+    # Render the scatter plot
+    output$scatPlot <- renderPlot({
+
+       ##########
+       ## Get the file
+       inFile <- input$file
+
+       if (is.null(inFile))
+         return(NULL)
+
+       beerDataOrig <- read.csv(inFile$datapath, header=TRUE)
+
+       #clean the data here
+       beerData = beerDataOrig %>% filter(!is.na(Name) & !is.na(Beer_ID) &
+                        !is.na(ABV) & !is.na(IBU) & !is.na(Brewery_id))
+       
+      ##########
+      ## Put an if/else for scatterplot with regression
+      if(input$regression == TRUE)
+      {
+         beerData %>%
+            ggplot(aes(x = ABV,y = IBU)) + 
+            geom_jitter() + 
+            ggtitle("ABV vs. IBU") + 
+            geom_smooth(method="lm", se=F) + 
+            stat_cor(label.y = 150, 
+            aes(label = paste(..rr.label.., 
+                ..p.label.., 
+                sep = "~`,`~"))) +
+            stat_regline_equation(label.y = 145)
+      }
+      else
+      {
+         beerData %>%
+            ggplot(aes(x = ABV,y = IBU)) + 
+            geom_jitter() + 
+            ggtitle("ABV vs. IBU")
+      }
+
+    })
+    
+    #######
+    # Render the state plot
+    output$statePlot <- renderPlot({
+
+       ##########
+       ## Get the brewery file
+       inFile2 <- input$file2
+
+       if (is.null(inFile2))
+         return(NULL)
+
+       breweryDataOrig <- read.csv(inFile2$datapath, header=TRUE)
+       
+      
+       breweryDataOrig = as.data.frame(breweryDataOrig)
+       Breweries.in.each.state = count(breweryDataOrig$State)
+      
+       names(Breweries.in.each.state)[1] <- "state"
+       Breweries.in.each.state$state <-
+          str_replace_all(string=Breweries.in.each.state$state, 
+                        pattern=" ", repl="")
+      
+       centroid_labels <- 
+          utils::read.csv(system.file("extdata",
+                        paste0("us_", "states", "_centroids.csv"), 
+                        package = "usmap"), stringsAsFactors = FALSE)
+      
+       labels <- 
+          merge(x = centroid_labels, 
+                y = Breweries.in.each.state, 
+                by.x = "abbr", 
+                by.y = "state", 
+                all.x=TRUE)
+      
+       names(labels)[6] <- "breweries_count"
+      
+       plot_usmap(data = Breweries.in.each.state, values = "freq", labels=FALSE) + 
+          scale_fill_continuous(low = "white", 
+                                high = "orange", 
+                                name = "# of Breweries", 
+                                label = scales::comma) + 
+          theme(legend.position = "right") + 
+          theme(panel.background = element_rect(colour = "black")) + 
+          labs(title = "Number of Breweries by State") + 
+          geom_text(data = labels, 
+                    ggplot2::aes(x = x, y = y, 
+                    label = scales::number(breweries_count,accuracy = 1)),
+                    color = "black")
+    })
+  
+}
+
+shinyApp(ui, server)
+
+```
