@@ -1,0 +1,91 @@
+---
+title: "Untitled"
+author: "Chris Roche"
+date: "2/4/2021"
+output: html_document
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo = FALSE}
+
+library(shiny)
+library(tidyverse)
+library(ggthemes)
+
+ui <- fluidPage(
+  
+  # App title ----
+  titlePanel("Ole Faithful App!"),
+  
+  # Sidebar layout with input and output definitions ----
+  sidebarLayout(
+    
+    # Sidebar panel for inputs ----
+    sidebarPanel(
+      
+      # File upload
+      fileInput("file", "Choose CSV File", accept = ".csv"),
+      
+      # ABV or IBU
+      radioButtons("variable", label = h3("Data to Use"),
+          choices = list("IBU" = 1, "ABV" = 2), selected = 1),
+      
+      # Number of bins
+      sliderInput(inputId = "bins",
+          label = "Number of bins:",
+          min = 1,
+          max = 50,
+          value = 30),
+      
+      # Render Regression Line
+      checkboxInput("regression", "Render Regression Line", TRUE),
+
+      
+      # # Radio button for ABV v IBU
+      # radioButtons("variable", label = h3("Data to Use"),
+      #    choices = list("IBU" = 1, "ABV" = 2), selected = 1), 
+      #    hr(), fluidRow(column(3, verbatimTextOutput("value"))),
+      # 
+      # # Slider for number of bins
+      # sliderInput(inputId = "bins",
+      #             label = "Number of bins:",
+      #             min = 1,
+      #             max = 50,
+      #             value = 30),
+      # 
+      # # regression line
+      # checkboxInput("regression", label = "Regression Line", value = TRUE),
+      #   hr(),fluidRow(column(3, verbatimTextOutput("value")))
+      
+      
+    ), # end SideBar Panel
+    
+    # Main panel for displaying outputs ----
+    mainPanel(
+      
+      # Output: Histogram ----
+      textOutput("selected_var"),
+      textOutput("selected_var2"),
+      
+    ) # end MainPanel
+  ) # end SideBar Layout
+) # end UI fluidPage
+
+
+# Define server logic required to draw a histogram ----
+server <- function(input, output) {
+  
+    output$selected_var <- renderText({ 
+      "You have selected this" })
+
+  output$selected_var2 <- renderPrint({ input$file })
+}
+
+shinyApp(ui, server)
+
+```
+

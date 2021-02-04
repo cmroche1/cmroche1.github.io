@@ -1,10 +1,12 @@
 name: "my-website"
 navbar:
-  title: "Chris Roche GitHub"
-  left: 
+  title: "Chris Roche"
+  left:
     - text: "Home"
       href: index.html
     - text: "About Me"
       href: AboutMe.html
-    - text: "CaseStudy1"
+    - text: "CaseStudy1 Report"
       href: Projects/CaseStudy1_Group3.html
+    - text: "CaseStudy1 Shiny"
+      href: https://cmroche1.shinyapps.io/CaseStudy01Shiny/

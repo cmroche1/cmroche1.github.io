@@ -1,8 +1,8 @@
 ---
-title: "Index"
-author: "Chris Roche"
-date: "2/3/2021"
+title: "Welcome"
 output: html_document
 ---
 
-# GitHub
+<br />
+<br />
+Welcome to my GitHub page. Check out my About Me page or one of my projects.
