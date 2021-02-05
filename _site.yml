@@ -10,3 +10,6 @@ navbar:
       href: Projects/CaseStudy1_Group3.html
     - text: "CaseStudy1 Shiny"
       href: https://cmroche1.shinyapps.io/CaseStudy01Shiny/
+    - text: "Baseball Shiny"
+      href: https://cmroche1.shinyapps.io/Baseball2020/
+
