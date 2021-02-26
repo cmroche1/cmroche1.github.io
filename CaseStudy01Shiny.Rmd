@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r echo = FALSE}
-
+suppressMessages(library(shinyWidgets))
 suppressMessages(library(shiny))
 suppressMessages(library(tidyverse))
 suppressMessages(library(ggthemes))
@@ -56,8 +56,11 @@ ui <- fluidPage(
       
       # Render Regression Line
       checkboxInput("regression", "Render Regression Line", TRUE),
-      #radioButtons("regression", label = h3("Render regression line"),
-      #    choices = list("Yes" = 1, "No" = 2), selected = 1),
+
+      # Get states to include
+      pickerInput(inputId = "id", label = "State(s) :", "",
+                  options = list(`actions-box` = TRUE, `selected-text-format` = "count > 2",
+                  `count-selected-text` = "{0}/{1} States"), multiple = TRUE ),
       
     ),# end sidebarPanel
     
@@ -75,8 +78,9 @@ ui <- fluidPage(
       
     ) ) ) # end main, sidebarLayout, fluid page
 
+###########################
 # Define server logic required to draw a histogram ----
-server <- function(input, output) {
+server <- function(input, output, session) {
   
     #######
     # Render the histogram plot
@@ -91,10 +95,19 @@ server <- function(input, output) {
 
        beerDataOrig <- read.csv(inFile$datapath, header=TRUE)
 
+       # filter based on states selected
+       if (!is.null(input$file2))
+       {
+           inFile2 <- input$file2
+           breweryDataOrig <- read.csv(inFile2$datapath, header=TRUE)           
+           beerData <- merge(x = beerDataOrig, y = breweryDataOrig,
+                             by.x = "Brewery_id", by.y = "Brew_ID", all = TRUE)
+           beerData <- beerData %>% filter(State %in% input$id)
+       }
+       
        #clean the data here
        beerData = beerDataOrig %>% filter(!is.na(Name) & !is.na(Beer_ID) &
                         !is.na(ABV) & !is.na(IBU) & !is.na(Brewery_id))
-
        
       if(input$distType == 2) ## Boxplot
       {
@@ -169,6 +182,16 @@ server <- function(input, output) {
 
        beerDataOrig <- read.csv(inFile$datapath, header=TRUE)
 
+       # filter based on states selected
+       if (!is.null(input$file2))
+       {
+           inFile2 <- input$file2
+           breweryDataOrig <- read.csv(inFile2$datapath, header=TRUE)           
+           beerData <- merge(x = beerDataOrig, y = breweryDataOrig,
+                             by.x = "Brewery_id", by.y = "Brew_ID", all = TRUE)
+           beerData <- beerData %>% filter(State %in% input$id)
+       }
+       
        #clean the data here
        beerData = beerDataOrig %>% filter(!is.na(Name) & !is.na(Beer_ID) &
                         !is.na(ABV) & !is.na(IBU) & !is.na(Brewery_id))
@@ -247,9 +270,32 @@ server <- function(input, output) {
                     label = scales::number(breweries_count,accuracy = 1)),
                     color = "black")
     })
+    
+    observe({
+        req(input$file2)
+      
+        inFile2 <- input$file2
+
+        if (is.null(inFile2))
+           return(NULL)
+
+        breweryDataOrig <- read.csv(inFile2$datapath, header=TRUE)
+      
+        breweryDataOrig <- breweryDataOrig[order(breweryDataOrig$State),]
+        state <- unique(breweryDataOrig$State)
+        
+        updatePickerInput(
+            session,
+            "id",
+            choices = unique(breweryDataOrig$State),
+            select = state
+        )
+    })
   
 }
 
-shinyApp(ui, server)
+#shinyApp(ui, server)
+shinyApp(ui = ui, server = server, options = list(height = 1080))
+
 
 ```
