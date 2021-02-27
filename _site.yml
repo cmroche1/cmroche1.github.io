@@ -12,6 +12,8 @@ navbar:
       href: https://cmroche1.shinyapps.io/CaseStudy01Shiny/
     - text: "CaseStudy2 Report"
       href: Projects/CaseStudy2.html
+    - text: "CaseStudy2 Presentation"
+      href: https://youtu.be/2mG4sgvjgwM
     - text: "Baseball Shiny"
       href: https://cmroche1.shinyapps.io/Baseball2020/
 

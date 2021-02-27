@@ -2,14 +2,14 @@
 title: "About Me"
 output: html_document
 ---
+<br />  
   
   
-# Chris Roche
-#### Software Engineer
-#### Location: Dallas, Texas
-#### Interests: Baseball, Reading, Space
-#### Undergrad: University of North Texas, B.S. Computer Science
-#### Graduate: Current SMU Student, M.S. Data Science
+**Software Engineer**  
+**Location:**  Dallas, Texas  
+**Interests:** Baseball, Reading, Space industry  
+**Undergrad:** University of North Texas, B.S. Computer Science  
+**Graduate:**  Current SMU Student, M.S. Data Science  
 <br />
 <br />
 <br />
