@@ -1,371 +1,426 @@
 <!DOCTYPE html>
-
-<html>
-
+<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+   <!--- Basic Page Needs
+   ================================================== -->
+   <meta charset="utf-8">
+	<title>Chris Roche</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
 
+   <!-- Mobile Specific Metas
+   ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+	<!-- CSS
+    ================================================== -->
+   <link rel="stylesheet" href="css/default.css">
+	<link rel="stylesheet" href="css/layout.css">
+   <link rel="stylesheet" href="css/media-queries.css">
+   <link rel="stylesheet" href="css/magnific-popup.css">
 
+   <!-- Script
+   ================================================== -->
+	<script src="js/modernizr.js"></script>
 
-<title>Welcome</title>
-
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
-
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
-
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
-
-
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
-
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-</style>
-
-
-<style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script>
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark it active
-  menuAnchor.parent().addClass('active');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-
-
-
+   <!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="favicon.png" >
 
 </head>
 
 <body>
 
+   <!-- Header
+   ================================================== -->
+   <header id="home">
 
-<div class="container-fluid main-container">
+      <nav id="nav-wrap">
 
+         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+	      <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
 
+         <ul id="nav" class="nav">
+            <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
+            <li><a class="smoothscroll" href="#about">About</a></li>
+	         <li><a class="smoothscroll" href="#resume">Experience</a></li>
+            <li><a class="smoothscroll" href="#contact">Contact</a></li>
+			<li><a href="https://www.linkedin.com/in/chris-roche/" target="_blank">LinkedIN</a></li>
+         </ul> <!-- end #nav -->
 
+      </nav> <!-- end #nav-wrap -->
 
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">Chris Roche</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="AboutMe.html">About Me</a>
-</li>
-<li>
-  <a href="Projects/CaseStudy1_Group3.html">CaseStudy1 Report</a>
-</li>
-<li>
-  <a href="https://cmroche1.shinyapps.io/CaseStudy01Shiny/">CaseStudy1 Shiny</a>
-</li>
-<li>
-  <a href="Projects/CaseStudy2.html">CaseStudy2 Report</a>
-</li>
-<li>
-  <a href="https://youtu.be/2mG4sgvjgwM">CaseStudy2 Presentation</a>
-</li>
-<li>
-  <a href="https://cmroche1.shinyapps.io/Baseball2020/">Baseball Shiny</a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
+      <div class="row banner">
+         <div class="banner-text">
+            <h1 class="responsive-headline">I'm Chris Roche.</h1>
+            <h3>I'm a Dallas based <span>computer engineer</span>, <span>software developer</span>, and <span>veteran</span>, specializing in computer and embedded systems.
+			<a class="smoothscroll" href="#about">Start scrolling</a>
+            and learn more <a class="smoothscroll" href="#about">about me</a>.</h3>
+            <hr />
+         </div>
+      </div>
 
-<div class="fluid-row" id="header">
+      <p class="scrolldown">
+         <a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
+      </p>
+
+   </header> <!-- Header End -->
 
 
+   <!-- About Section
+   ================================================== -->
+   <section id="about">
 
-<h1 class="title toc-ignore">Welcome</h1>
+      <div class="row">
 
-</div>
+         <div class="three columns">
 
+            <img class="profile-pic"  src="images/profilepic.jpg" alt="" />
 
-<p><br /> <br /> Welcome to my GitHub page. Check out my About Me page or one of my projects.</p>
+         </div>
 
+         <div class="nine columns main-col">
 
+            <h2>About Me</h2>
 
+            <p>
+                I am a former United States Marine and graduate from the University of North Texas. <br><br>
 
-</div>
+                I received a B.S. Computer Engineering (Cum Laude) and Minor in Mathematics from the University of North Texas in 2017. I am currently enrolled as a Graduate student in Southern Methodist University's M.S. Data Science program with a Machine Learning specialization. <br><br>
 
-<script>
+                I am a fast learner with strong analytical and problem solving skills. I have a high work ethic and enjoy being challenged. Passionate about bringing new technologies from conception to reality. <br><br>
 
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
+                Currently a Senior Software Engineer, Technical Lead, and Licensed Scrum Master in the Dallas/Fort Worth area. <br><br>
+            </p>
 
+            <div class="row">
 
-</script>
+               <div class="columns contact-details">
 
-<!-- tabsets -->
+                  <h2>Contact Details</h2>
+                  <p class="address">
+					<span>chrismroche.com</span><br>
+                    <span>cmroche@gmail.com</span>
+				  </p>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
-<!-- code folding -->
+               </div>
 
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
+<!-- This is the Download Resume Section.
+               <div class="columns download">
+                  <p>
+                     <a href="resume.pdf" class="button" target="_blank"><i class="fa fa-download"></i>Download Resume (Out of date)</a>
+                  </p>
+               </div>
+
+-->
+
+
+            </div> <!-- end row -->
+
+         </div> <!-- end .main-col -->
+
+      </div>
+
+   </section> <!-- About Section End-->
+
+
+   <!-- Resume Section
+   ================================================== -->
+   <section id="resume">
+
+      <!-- Education
+      ----------------------------------------------- -->
+      <div class="row education">
+
+         <div class="three columns header-col">
+            <h1><span>Education</span></h1>
+         </div>
+
+         <div class="nine columns main-col">
+
+
+            <div class="row item">
+
+               <div class="twelve columns">
+
+                  <h3>Southern Methodist University</h3>
+                  <p class="info">M.S. in Data Science <span>&bull;</span> <em class="date"> Present</em></p>
+
+                  <p>
+				  <ul>
+					<li> &bull; Specialized in Machine Learning </li>
+					<li> &bull; Experience in data collection, cleaning, analysis, and visualization. </li>
+					<li> &bull; R, Python, SAS </li>
+				  </ul>
+                  </p>
+
+               </div>
+
+            </div> <!-- item end -->
+
+
+            <div class="row item">
+
+               <div class="twelve columns">
+
+                  <h3>University of North Texas</h3>
+                  <p class="info">B.S. in Computer Engineering, Minor in Mathematics <span>&bull;</span> <em class="date">May 2017</em></p>
+
+                  <p>
+				  <ul>
+                     <li> &bull; Specialization in Embedded and Computer Systems </li>
+                     <li> &bull; Graduated Cum Laude, GPA: 3.7 </li>
+				  </ul>
+                  </p>
+
+               </div>
+
+            </div> <!-- item end -->
+
+         </div> <!-- main-col end -->
+
+      </div> <!-- End Education -->
+
+
+      <!-- Work
+      ----------------------------------------------- -->
+      <div class="row work">
+
+         <div class="three columns header-col">
+            <h1><span>Work</span></h1>
+         </div>
+
+         <div class="nine columns main-col">
+
+            <div class="row item">
+
+
+
+
+
+              <div class="twelve columns">
+
+                  <h3>Raytheon Technologies</h3>
+                  <p class="info">Senior Software Engineer <span>&bull;</span> <em class="date">May 2017 - Present</em></p>
+
+                  <p>
+				  <ul>
+					<li> &bull; Engineer for Intelligence & Space division of Raytheon </li>
+                    <li> &bull; Software Technical Lead on critical programs from Requirements and Design, to Development, Integration, and Delivery </li>
+                    <li> &bull; Scrum Master, Product Owner, Software Technical Lead </li>
+                    <li> &bull; DevOps Pipeline: git, Jenkins, SonarQube, Coverity, GoogleTest, Doxygen, Jira, Confluence </li>
+                    <li> &bull; Real-Time Embedded Systems </li>
+                    <li> &bull; Electro-Optical/Infra-Red (EO/IR) </li>
+                    <li> &bull; Professional development courses in Machine Learning, Software Architecture, DevOps, Systems Engineering, IR Focal Plane Arrays/Detectors/Readouts </li>
+                    <li> &bull; C, C++, Ada, OpenCL, CUDA, Python, Bash </li>
+
+				  </ul>
+                  </p>
+
+               </div>
+
+
+
+
+              <div class="twelve columns">
+
+                  <h3>United States Marine Corps</h3>
+                  <p class="info">Team Leader <span>&bull;</span> <em class="date">February 2007 - February 2012</em></p>
+
+                  <p>
+				  <ul>
+					<li> &bull; Served as Intelligence Chief in a strategically important location in a combat zone </li>
+					<li> &bull; Trained and led a ten person team in Afghanistan </li>
+					<li> &bull; Awarded Navy and Marine Corps Achievement Medal for excellence </li>
+					<li> &bull; Collected, analyzed, and disseminated thousands of reports to various agencies </li>
+					<li> &bull; Routinely coordinated with and advised military and government agency leaders throughout the world </li>
+					<li> &bull; Developed and implemented training curriculum for future Intelligence teams </li>
+				  </ul>
+                  </p>
+
+               </div>
+
+
+
+
+            </div> <!-- item end -->
+
+		<!--
+
+		add a new item here
+
+		-->
+
+         </div> <!-- main-col end -->
+
+      </div> <!-- End Work -->
+
+
+      <!-- Skills
+      ----------------------------------------------- -->
+      <div class="row skill">
+
+         <div class="three columns header-col">
+            <h1><span>Skills</span></h1>
+         </div>
+
+         <div class="nine columns main-col">
+
+            <p>A few of my professional skills
+            </p>
+
+				<div class="bars">
+
+				   <ul class="skills">
+				       	<li><span class="bar-expand seventyfive"></span><em>Software Architecture</em></li>
+						<li><span class="bar-expand nintyfive"></span><em>Agile & DevOps</em></li>
+						<li><span class="bar-expand seventyfive"></span><em>System Integration</em></li>
+
+						<li><span class="bar-expand nintyfive"></span><em>Small team leadership</em></li>
+						<li><span class="bar-expand seventyfive"></span><em>Real Time & Embedded Systems</em></li>
+						<!-- <li><span class="bar-expand nintyfive"></span><em>Linux/Unix, Windows</em></li> -->
+					</ul>
+
+				</div><!-- end skill-bars -->
+
+			</div> <!-- main-col end -->
+
+      </div> <!-- End skills -->
+
+   </section> <!-- Resume Section End-->
+
+
+   <!-- Contact Section
+   ================================================== -->
+   <section id="contact">
+
+         <div class="row section-head">
+
+            <div class="two columns header-col">
+
+               <h1><span>Get In Touch.</span></h1>
+
+            </div>
+
+            <div class="ten columns">
+
+                  <p class="lead">Send me a message.
+                  </p>
+
+            </div>
+
+         </div>
+
+         <div class="row">
+
+            <div class="eight columns">
+
+               <!-- form -->
+               <form action="" method="post" id="contactForm" name="contactForm">
+					<fieldset>
+
+                  <div>
+						   <label for="contactName">Name <span class="required">*</span></label>
+						   <input type="text" value="" size="35" id="contactName" name="contactName">
+                  </div>
+
+                  <div>
+						   <label for="contactEmail">Email <span class="required">*</span></label>
+						   <input type="text" value="" size="35" id="contactEmail" name="contactEmail">
+                  </div>
+
+                  <div>
+						   <label for="contactSubject">Subject</label>
+						   <input type="text" value="" size="35" id="contactSubject" name="contactSubject">
+                  </div>
+
+                  <div>
+                     <label for="contactMessage">Message <span class="required">*</span></label>
+                     <textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>
+                  </div>
+
+                  <div>
+                     <button class="submit">Submit</button>
+                     <span id="image-loader">
+                        <img alt="" src="images/loader.gif">
+                     </span>
+                  </div>
+
+					</fieldset>
+				   </form> <!-- Form End -->
+
+               <!-- contact-warning -->
+               <div id="message-warning">Error</div>
+               <!-- contact-success -->
+				   <div id="message-success">
+                  <i class="fa fa-check"></i>Your message was sent, thank you! If required, I'll get back to you as soon as possible.<br>
+				   </div>
+
+            </div>
+
+
+            <aside class="four columns footer-widgets">
+
+				<div class="widget widget_contact">
+
+				   <h4>Thanks for visiting!</h4>
+
+                   <h3><br><br>"You don't save a pitcher for tomorrow. Tomorrow it may rain."
+                   <br> &emsp; Leo Durocher </h3>
+
+				   <h3><br><br>"Believe you can and you're halfway there."
+                   <br> &emsp; Theodore Roosevelt </h3>
+
+				</div>
+
+            </aside>
+
+      </div>
+
+   </section> <!-- Contact Section End-->
+
+
+   <!-- footer
+   ================================================== -->
+   <footer>
+
+      <div class="row">
+
+         <div class="twelve columns">
+
+		    <ul class="social-links">
+               <li><a href="https://www.linkedin.com/in/chris-roche/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+
+            <ul class="copyright">
+               <li>&copy; Copyright 2021 Christopher Roche</li>
+               <li>Design by <a title="Styleshout" href="http://www.styleshout.com/">Styleshout</a></li>
+            </ul>
+
+         </div>
+
+         <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#home"><i class="icon-up-open"></i></a></div>
+
+      </div>
+
+   </footer> <!-- Footer End-->
+
+   <!-- Java Script
+   ================================================== -->
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
+   <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+
+   <script src="js/jquery.flexslider.js"></script>
+   <script src="js/waypoints.js"></script>
+   <script src="js/jquery.fittext.js"></script>
+   <script src="js/magnific-popup.js"></script>
+   <script src="js/init.js"></script>
 
 </body>
+
 </html>
