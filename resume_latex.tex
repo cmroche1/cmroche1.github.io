@@ -1,0 +1,245 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+\documentclass[11pt,a4paper,roman]{moderncv}
+
+% modern themes
+\moderncvstyle{banking}
+% style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+
+\moderncvcolor{blue}
+% color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+\nopagenumbers{}
+% uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+\usepackage[utf8]{inputenc}
+\usepackage{fontawesome}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+
+% adjust the page margins
+\usepackage[scale=0.8]{geometry}
+\usepackage{multicol}
+\usepackage{import}
+
+% personal data
+\name{Chris}{Roche}
+% \title{Curriculum Vitae}                               % optional, remove / comment the line if not wanted
+\address{Dallas, Texas}{}{}
+\vspace{2mm}
+
+\newcommand*{\customcventry}[7][.25em]{
+  \begin{tabular}{@{}l} 
+    {\bfseries #4}
+  \end{tabular}
+  \hfill% move it to the right
+  \begin{tabular}{l@{}}
+     {\bfseries #5}
+  \end{tabular} \\
+  \begin{tabular}{@{}l} 
+    {\itshape #3}
+  \end{tabular}
+  \hfill% move it to the right
+  \begin{tabular}{l@{}}
+     {\itshape #2}
+  \end{tabular}
+  \ifx&#7&%
+  \else{\\%
+    \begin{minipage}{\maincolumnwidth}%
+      \small#7%
+    \end{minipage}}\fi%
+  \par\addvspace{#1}}
+
+\newcommand*{\customcvproject}[4][.25em]{
+%   \vfill\noindent
+  \begin{tabular}{@{}l} 
+    {\bfseries #2}
+  \end{tabular}
+  \hfill% move it to the right
+  \begin{tabular}{l@{}}
+     {\itshape #3}
+  \end{tabular}
+  \ifx&#4&%
+  \else{\\%
+    \begin{minipage}{\maincolumnwidth}%
+      \small#4%
+    \end{minipage}}\fi%
+  \par\addvspace{#1}}
+
+\setlength{\tabcolsep}{12pt}
+
+
+
+
+
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+\makecvtitle
+\vspace*{-14.5mm}
+
+\begin{center}
+\begin{tabular}{ c c c c }
+ \faGlobe\enspace chrismroche.com  &
+ \faEnvelopeO\enspace cmroche@gmail.com & 
+ \faMobile\enspace (910) 526-4674\\  
+\end{tabular}
+\end{center}
+
+
+
+
+
+\section{SUMMARY}
+As a Principal Software Engineer with Raytheon, I have worked as a Software Architect, Product Owner, and Scrum Master. I excel at taking complex software products from requirements derivation to design, development, integration, and delivery. Extensive experience interacting with customers and other engineering and business disciplines. I am a fast learner with strong analytical and problem solving skills. I have a high work ethic and enjoy being challenged. A lifelong learner passionate about bringing new technologies from design to reality. Certified Scrum Master and former United States Marine with an active Secret security clearance. 
+\vspace{2mm}
+
+
+
+
+
+
+\section{ PROFESSIONAL EXPERIENCE}
+{\customcventry{May 2017 – Present}{Principal Software Engineer}{Raytheon, an RTX Business}{McKinney, Texas}{}{}
+  {\begin{itemize}
+    \item Software product technical lead, Architect, Product Owner, and Scrum Master on franchise programs
+    \vspace{1mm}
+    \item Oversee day-to-day software efforts of multiple teams through various product life-cycle phases and milestones
+    \vspace{1mm}
+    \item Regularly assists other engineering disciplines with requirements development, system design, integration, technical documentation
+    \vspace{1mm}
+    \item Extensive experience in customer facing roles, technical communication, and presentation
+    \vspace{1mm}
+    \item Lead system integrator on an emerging product; experienced in ground and flight tests
+    \vspace{1mm}
+    \item Strong background in System Architecture, System Integration \&\ Test, Root Cause Corrective Action
+    \vspace{1mm}
+    \item Software Cost Estimation and Basis of Estimate for programs and proposals 
+    \vspace{1mm}
+    \item Experience deploying and running Agile at Scale
+    \vspace{1mm}
+    \item Advanced technical education courses in Software Architecture, Principles of Systems Engineering, Machine Learning, and Electro-Optical Infrared systems
+    \vspace{1mm}
+    \item Multiple Achievement Awards for technical leadership and program contributions
+    \vspace{1mm}
+    \item Software Engineer of the Month in Business Unit for technical contributions
+    \vspace{1mm}
+\  \end{itemize}
+  }
+}
+\vspace{2mm}
+
+
+
+
+
+{\customcventry{February 2007 – February 2012}{Intelligence Team Leader}{United States Marine Corps }{Jacksonville, North Carolina} {}{}
+  {\begin{itemize}
+    \item Trained and led a ten-person team in a combat zone
+    \vspace{1mm}
+    
+    \item Intelligence Chief in a combat zone
+    \vspace{1mm}
+    
+    \item Routinely coordinated with and advised military and government agency leaders throughout the world
+    \vspace{1mm}
+
+    \item Awarded Navy and Marine Corps Achievement Medal for excellence
+
+\  \end{itemize}
+  }
+}
+
+
+
+
+
+\section{RELEVANT SKILLS}
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+Environments \ & Linux, Windows, Real-Time Embedded Systems \\
+Programming Languages \&\ \ & C, C++, Python, R, Bash, Cuda, OpenCL \\
+Tools \ & Git, Jenkins, CMake, Eclipse, Visual Studio, SonarQube, Coverity,  \\
+\ & gtest, Atlassian suite, CI Pipelines \\ 
+Machine Learning\ & EDA, NLP, Time Series, TensorFlow, Deep Learning, \\ 
+\ & Machine Learning for Embedded Systems  \\
+\end{tabular}
+\vspace{2mm}
+
+
+
+
+
+\section{EDUCATION}
+{\customcventry{August 2022}{M.Sc in Data Science, Concentration in Machine Learning}{Southern Methodist University}{Dallas, Texas}{}{}}
+GPA: 4.00, Cum Laude \\
+
+{\customcventry{May 2017}{B.Sc in Computer Engineering, Minor in Mathematics}{University of North Texas}{Denton, Texas}{}{}}
+GPA: 3.76, Cum Laude \\
+
+
+
+
+
+\section{ACADEMIC PROJECTS}
+{\customcvproject{Master's Thesis and Capstone Project}{January 2022 – August 2022}
+  {\begin{itemize}
+    \item Automated Essay Evaluation and Student Feedback System using Natural Language Processing and Multi-Armed Bandit Recommender Engine
+\  \end{itemize}
+  }
+}
+\vspace{2mm}
+
+
+
+
+
+
+\section{PUBLICATIONS}
+\begin{itemize}
+    \item Chris Roche, Nathan Deinlein, Darryl Dawkins: 
+    \textit{Using Natural Language Processing to Increase Modularity and Interpretability of Automated Essay Evaluation and Student Feedback} published in the SMU Data Science Review, Volume 6, 2022
+\end{itemize}
+\vspace{3mm}
+
+
+
+
+
+
+
+\section{VOLUNTEER ACTIVITIES}
+\begin{itemize}
+    \item Asst. Coach, McKinney Little League (October 2022 - Present)
+    \vspace{1mm}
+    \item Judge, Invention Convention U.S. Nationals (Multiple Years)
+    \vspace{1mm}
+    \item Judge, NASA Name the 2020 Rover (January 2020 - March 2020)
+\end{itemize}
+\vspace{3mm}
+
+
+
+      
+      
+\section{INTERESTS}
+Emerging Technologies, Defense Industry, Machine Learning, Data Analysis, Baseball
+\vspace{3mm}
+
+
+
+
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{publications}                        % 'publications' is the name of a BibTeX file
+\end{document}
+
+
+%% end of file `template.tex'.
